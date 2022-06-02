@@ -2,23 +2,22 @@ const appRoot = document.getElementById('app');
 
 let isParaVisible = false;
 
-const onToggle = () => {
+const toggleVisibility = () => {
     isParaVisible = !isParaVisible;
     console.log(isParaVisible)
     renderIt();
-};
-const setParaVisibility = () => {
-    if (isParaVisible) {
-        return <p>Hi, How are you?</p>
-    }
 };
 
 const renderIt = () => {
     const template = (
         <div>
             <h1>Visibility Toggle</h1>
-            <button onClick={onToggle}>Show Details</button>
-            {setParaVisibility()}
+            <button onClick={toggleVisibility}>{!isParaVisible ? 'Show Details' : 'Hide Details'}</button>
+            {isParaVisible && (
+                <div>
+                    <p>Hi, How are you? </p>
+                </div>
+            )}
         </div>
     );
     ReactDOM.render(template, appRoot);
