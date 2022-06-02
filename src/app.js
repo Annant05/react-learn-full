@@ -6,8 +6,8 @@ const appRoot = document.getElementById('app');
 const app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
-    options: ['One', 'Two']
-}
+    options: []
+};
 
 const onFormSubmit = (e) => {
     e.preventDefault();
@@ -20,21 +20,28 @@ const onFormSubmit = (e) => {
         e.target.elements.option.value = '';
         renderAppInfo();
     }
-}
+};
 
 const onRemoveAll = () => {
     app.options = [];
     renderAppInfo();
-}
+};
 
-const numbers = [44, 12, 51]
+const onMakeDecision = () => {
+    const randomNum = Math.floor(Math.random() * app.options.length);
+    const option = app.options[randomNum];
+    alert(option);
+    console.log(randomNum);
+    renderAppInfo();
+};
+
 const renderAppInfo = () => {
     const template = (
         <div>
             <h1>{app.title}</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
             <p>{app.options.length ? 'Here are your options' : 'No Options'}</p>
-            <p>{app.options.length}</p>
+            <button disabled={!app.options.length} onClick={onMakeDecision}>What should I do</button>
             <button onClick={onRemoveAll}>Remove All</button>
             <ol>
                 {
@@ -53,6 +60,6 @@ const renderAppInfo = () => {
     );
 
     ReactDOM.render(template, appRoot);
-}
+};
 
 renderAppInfo();
