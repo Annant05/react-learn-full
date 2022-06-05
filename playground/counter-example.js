@@ -9,8 +9,22 @@ class Counter extends React.Component {
         this.handleReset = this.handleReset.bind(this);
 
         this.state = {
-            count: props.count
+            count: 0
         };
+    }
+
+    componentDidMount() {
+        const count = parseInt(localStorage.getItem('count'));
+        if (!isNaN(count)) {
+            this.setState(() => ({ count }));
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.count !== prevState.count) {
+            localStorage.setItem('count', this.state.count);
+            console.log("componentDidUpdate");
+        }
     }
 
     handleAddOne() {
@@ -48,9 +62,6 @@ class Counter extends React.Component {
             </div>
         )
     }
-}
-Counter.defaultProps = {
-    count: 0
 }
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
