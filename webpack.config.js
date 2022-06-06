@@ -17,5 +17,9 @@ module.exports = {
             exclude: /node_modules/
         }]
     },
-    devtool: 'cheap-module-eval-source-map'
+    // setup source-map to help us debug the errors from browser console.
+    devtool: 'cheap-module-eval-source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'public')
+    }
 };
