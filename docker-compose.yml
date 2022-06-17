@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  react_app:
+    build:
+      context: .
+    container_name: react_app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    volumes:
+      - ./:/usr/src/app/my-app
+      - /usr/src/app/my-app/node_modules
+    command: >
+      sh -c "yarn run dev-server"

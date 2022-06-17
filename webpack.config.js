@@ -20,6 +20,9 @@ module.exports = {
     // setup source-map to help us debug the errors from browser console.
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'public'),
+        port: 3000,
+        disableHostCheck: true,
+        host: '0.0.0.0',
     }
 };
