@@ -2,6 +2,7 @@
 const path = require('path');
 
 module.exports = {
+    context: __dirname,
     entry: './src/app.js',
     output: {
         path: path.join(__dirname, 'public'),
@@ -15,6 +16,14 @@ module.exports = {
             test: /\.js$/,
             // we want to exclude node_modules
             exclude: /node_modules/
+        },
+        {
+            test: /\.scss$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+            ]
         }]
     },
     // setup source-map to help us debug the errors from browser console.

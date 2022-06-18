@@ -9,7 +9,8 @@ services:
       - "3000:3000"
     stdin_open: true
     volumes:
-      - ./:/usr/src/app/my-app
-      - /usr/src/app/my-app/node_modules
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+
     command: >
       sh -c "yarn run dev-server"
