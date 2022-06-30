@@ -1,57 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-ReactDOM.render(<p>This is my  boilerplate</p>, document.getElementById('app'));
+const ExpenseDashboardPage = () => (
+    <div>
+        This is from my dashboard component
+    </div>
+)
 
-// const Layout = (props) => {
-//     return (
-//         <div>
-//             <p>header </p>
-//             {props.children}
-//             <p>footer </p>
-//         </div>
-//     )
-// }
+const AddExpensePage = () => (
+    <div>
+        This is from my add expense component
+    </div>
+)
 
-// const template = (
-//     <div>
-//         <h1>Page Title</h1>
-//         <p>This is my page</p>
-//     </div>
-// )
+const EditExpensePage = () => (
+    <div>
+        This is from my edit expense component
+    </div>
+)
 
-// ReactDOM.render((
-//     <Layout>
-//         {template}
-//     </Layout>
-// ), document.getElementById('app'));
+const HelpExpensePage = () => (
+    <div>
+        This is from my help  component
+    </div>
+)
 
+const routes = (
+    <BrowserRouter>
+        <div>
+            <Route path="/" component={ExpenseDashboardPage} exact={true} />
+            <Route path="/create" component={AddExpensePage} />
+            <Route path="/edit" component={EditExpensePage} />
+            <Route path="/help" component={HelpExpensePage} />
+        </div>
+    </BrowserRouter>
+);
 
-// // trying out new class definition type.
-// class OldSyntax {
-//     constructor() {
-//         this.name = 'Mike';
-//         this.getGreeting = this.getGreeting.bind(this);
-//     }
-//     getGreeting() {
-//         return `Hi my name is ${this.name}.`;
-//     }
-// }
-// const oldSyntax = new OldSyntax();
-// console.log(oldSyntax);
-// const getGreeting = oldSyntax.getGreeting;
-// console.log(getGreeting());
-
-// // example of new type.
-// class NewSyntax {
-//     name = 'Abc'
-//     getGreeting = () => {
-//         return `Hi my name is ${this.name}.`;
-//     }
-// }
-
-// const newSyntax = new NewSyntax();
-// const getGreeting2 = newSyntax.getGreeting;
-// console.log(getGreeting2());
+ReactDOM.render(routes, document.getElementById('app'));
